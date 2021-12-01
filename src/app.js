@@ -23,7 +23,8 @@ function draw() {
     showBall();
     movimentBall();
     verifiedColision();
-    showRacket();   
+    showRacket(); 
+    movimentRacket();  
 }
 
 function showBall(){
@@ -47,4 +48,13 @@ function verifiedColision(){
 
 function showRacket(){
     rect(xRacket, yRacket, widthRacket, heightRacket);
+}
+
+function movimentRacket(){
+    if(keyIsDown(UP_ARROW)){
+        yRacket -= 5;
+    }
+    if(keyIsDown(DOWN_ARROW)){
+        yRacket += 5;
+    }
 }
