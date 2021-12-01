@@ -14,6 +14,8 @@ let yRacket = 150;
 let widthRacket = 10;
 let heightRacket = 90;
 
+let colision = false;
+
 function setup() {
     createCanvas(600, 400);
 }
@@ -25,7 +27,8 @@ function draw() {
     verifiedColision();
     showRacket(); 
     movimentRacket();
-    verifiedColisionRacket();  
+    //verifiedColisionRacket();
+    colisionMyRacketLibrary();  
 }
 
 function showBall(){
@@ -62,6 +65,13 @@ function movimentRacket(){
 
 function verifiedColisionRacket(){
     if(xBall - radius < xRacket + widthRacket && yBall - radius < yRacket + heightRacket && yBall + radius > yRacket){
+        xVelocityBall *= -1;
+    }
+}
+
+function colisionMyRacketLibrary(){ 
+    colision = collideRectCircle(xRacket,yRacket,widthRacket,heightRacket,xBall,yBall,radius);
+    if (colision){
         xVelocityBall *= -1;
     }
 }
