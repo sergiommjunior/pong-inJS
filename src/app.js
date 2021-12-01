@@ -14,4 +14,12 @@ function draw() {
     circle(xCoordenate, yCoordenate, diameter);
     xCoordenate += xVelocityBall;
     yCoordenate += yVelocityBall;
+
+    if(xCoordenate > width || xCoordenate < 0){
+        xVelocityBall *= -1;
+    }
+
+    if(yCoordenate > height || yCoordenate < 0){
+        yVelocityBall *= -1;
+    }
 }
