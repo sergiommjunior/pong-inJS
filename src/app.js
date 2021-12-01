@@ -5,8 +5,8 @@ let diameter = 20;
 let radius = diameter / 2;
 
 //Velocity Variables
-let xVelocityBall = 7;
-let yVelocityBall = 7;
+let xVelocityBall = 4;
+let yVelocityBall = 4;
 
 //Racket Variables
 let xRacket = 5;
@@ -24,7 +24,8 @@ function draw() {
     movimentBall();
     verifiedColision();
     showRacket(); 
-    movimentRacket();  
+    movimentRacket();
+    verifiedColisionRacket();  
 }
 
 function showBall(){
@@ -56,5 +57,11 @@ function movimentRacket(){
     }
     if(keyIsDown(DOWN_ARROW)){
         yRacket += 5;
+    }
+}
+
+function verifiedColisionRacket(){
+    if(xBall - radius < xRacket + widthRacket && yBall - radius < yRacket + heightRacket && yBall + radius > yRacket){
+        xVelocityBall *= -1;
     }
 }
