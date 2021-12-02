@@ -21,6 +21,10 @@ let yVelocityOpponent;
 
 let colision = false;
 
+//Scoreboard Variables
+let myScore = 0;
+let opponentScore = 0;
+
 function setup() {
     createCanvas(600, 400);
 }
@@ -37,6 +41,8 @@ function draw() {
     //verifiedColisionRacket();
     colisionRacketLibrary(xRacket, yRacket);
     colisionRacketLibrary(xRacketOpponent, yRacketOpponent);
+    addScoreboard();
+    scorePoint();
 }
 
 function showBall(){
@@ -74,6 +80,7 @@ function movimentRacket(){
 function verifiedColisionRacket(){
     if(xBall - radius < xRacket + widthRacket && yBall - radius < yRacket + heightRacket && yBall + radius > yRacket){
         xVelocityBall *= -1;
+        yVelocityBall *= -1;
     }
 }
 
@@ -87,4 +94,19 @@ function colisionRacketLibrary(x, y){
 function movimentRacketOpponent(){
     yVelocityOpponent = yBall - yRacketOpponent - widthRacket / 2 - 30;
     yRacketOpponent += yVelocityOpponent
+}
+
+function addScoreboard(){
+    fill(255)
+    text(myScore, 278, 26)
+    text(opponentScore, 321, 26)
+}
+
+function scorePoint(){
+    if(xBall > 590){
+        myScore += 1;
+    }
+    if(xBall < 10){
+        opponentScore += 1;
+    }
 }
