@@ -14,6 +14,11 @@ let yRacket = 150;
 let widthRacket = 10;
 let heightRacket = 90;
 
+//Opponent's Racket Variables
+let xRacketOpponent = 585;
+let yRacketOpponent = 150;
+let yVelocityOpponent;
+
 let colision = false;
 
 function setup() {
@@ -25,8 +30,10 @@ function draw() {
     showBall();
     movimentBall();
     verifiedColision();
-    showRacket(); 
+    showRacket(xRacket, yRacket);
+    showRacket(xRacketOpponent, yRacketOpponent); 
     movimentRacket();
+    movimentRacketOpponent();
     //verifiedColisionRacket();
     colisionMyRacketLibrary();  
 }
@@ -50,8 +57,8 @@ function verifiedColision(){
     }
 }
 
-function showRacket(){
-    rect(xRacket, yRacket, widthRacket, heightRacket);
+function showRacket(x, y){
+    rect(x, y, widthRacket, heightRacket);
 }
 
 function movimentRacket(){
@@ -74,4 +81,9 @@ function colisionMyRacketLibrary(){
     if (colision){
         xVelocityBall *= -1;
     }
+}
+
+function movimentRacketOpponent(){
+    yVelocityOpponent = yBall - yRacketOpponent - widthRacket / 2 - 30;
+    yRacketOpponent += yVelocityOpponent
 }
