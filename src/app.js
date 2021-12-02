@@ -35,7 +35,8 @@ function draw() {
     movimentRacket();
     movimentRacketOpponent();
     //verifiedColisionRacket();
-    colisionMyRacketLibrary();  
+    colisionRacketLibrary(xRacket, yRacket);
+    colisionRacketLibrary(xRacketOpponent, yRacketOpponent);
 }
 
 function showBall(){
@@ -76,8 +77,8 @@ function verifiedColisionRacket(){
     }
 }
 
-function colisionMyRacketLibrary(){ 
-    colision = collideRectCircle(xRacket,yRacket,widthRacket,heightRacket,xBall,yBall,radius);
+function colisionRacketLibrary(x, y){ 
+    colision = collideRectCircle(x,y,widthRacket,heightRacket,xBall,yBall,radius);
     if (colision){
         xVelocityBall *= -1;
     }
