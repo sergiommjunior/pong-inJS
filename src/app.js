@@ -97,9 +97,17 @@ function movimentRacketOpponent(){
 }
 
 function addScoreboard(){
-    fill(255)
-    text(myScore, 278, 26)
-    text(opponentScore, 321, 26)
+    stroke(255);
+    textAlign(CENTER);
+    textSize(18);
+    fill(color(255, 140, 0));
+    rect(150, 10, 40, 20);
+    fill(255);
+    text(myScore, 170, 26);
+    fill(color(255, 140, 0));
+    rect(450, 10, 40, 20);
+    fill(255);
+    text(opponentScore, 470, 26);
 }
 
 function scorePoint(){
