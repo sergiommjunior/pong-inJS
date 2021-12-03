@@ -5,8 +5,8 @@ let diameter = 20;
 let radius = diameter / 2;
 
 //Velocity Variables
-let xVelocityBall = 4;
-let yVelocityBall = 4;
+let xVelocityBall = 7;
+let yVelocityBall = 7;
 
 //Racket Variables
 let xRacket = 5;
@@ -25,8 +25,20 @@ let colision = false;
 let myScore = 0;
 let opponentScore = 0;
 
+//Sounds of the Game Variables
+let racket;
+let score;
+let soundtrack;
+
+function preload() {
+    soundtrack = loadSound("./src/soundtrack.mp3");
+    racket = loadSound("./src/racket.mp3");
+    score = loadSound("./src/score.mp3")
+}
+
 function setup() {
     createCanvas(600, 400);
+    soundtrack.loop();
 }
 
 function draw() {
@@ -88,6 +100,7 @@ function colisionRacketLibrary(x, y){
     colision = collideRectCircle(x,y,widthRacket,heightRacket,xBall,yBall,radius);
     if (colision){
         xVelocityBall *= -1;
+        racket.play();
     }
 }
 
@@ -113,8 +126,10 @@ function addScoreboard(){
 function scorePoint(){
     if(xBall > 590){
         myScore += 1;
+        score.play();
     }
     if(xBall < 10){
         opponentScore += 1;
+        score.play();
     }
 }
